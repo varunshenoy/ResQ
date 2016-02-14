@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ResQ</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animate.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+    <link rel="icon" type="image/png" href="icon.png">
+</head>
+
+<body>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '885083968274479',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+  </script>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper" style="background-color:#3498db;">
+                <a href="#!" class="brand-logo center">ResQ</a>
+                <!--<img src="apple-touch-icon.png">-->
+                <img src="settings.png" onclick="settings();" style="float:right; margin-top: 5px; margin-right: 5px; width: 45px;">
+                <img src="facebook.png" onclick="forum();" style="float:right; margin-top: 5px; margin-right: 5px; width: 45px;">
+                <img src="addHouse.png" onclick="addHouse();" style="float:left; margin-top: 5px; margin-left: 5px; width: 45px;">
+            </div>
+        </nav>
+    </div>
+    <div class="row newsHolder">
+
+    </div>
+    <div class="row">
+        <ul class="tabs bottom z-depth-3" style="z-index: 1000; padding-top: 7px; height: 45px;">
+            <li class="tab col s4" style="margin-top:-10px;">
+                <a href="#test4" onclick="loadNews()" class="selected" id="newsLoad"><img style="width:45px;" src="news.png"></a>
+            </li>
+            <li class="tab col s4" style="margin-top:-10px;">
+                <a href="#test1" onclick="loadHomes()"  id="homeLoad"><img style="width:45px;" src="house.png"></a>
+            </li>
+            <li class="tab col s4" style="margin-top:-10px;">
+                <a href="#test2" onclick="loadMap()"  id="mapLoad"><img style="width:45px;" src="world_map.png"></a>
+            </li>
+            <li class="tab col s4" style="margin-top:-10px;">
+                <a href="#test2" onclick="loadTime()"  id="timeLoad"><img style="width:45px;" src="timeline.png"></a>
+            </li>
+        </ul>
+    </div>
+    <div id="content" style="padding-bottom: 100px;">
+
+    </div>
+        <!--<div class="item animated bounceInDown"><img class="img" src="log_cabin.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available House</h6><p style="margin-top:-5px;">Max: 10 People</p><p style="margin-top:-15px;">0.6 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div>
+        <div class="item animated bounceInDown"><img class="img" src="barn.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available Barn</h6><p style="margin-top:-5px;">Max: 35 People</p><p style="margin-top:-15px;">1.3 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div>
+        <div class="item animated bounceInDown"><img class="img" src="log_cabin.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available House</h6><p style="margin-top:-5px;">Max: 10 People</p><p style="margin-top:-15px;">0.6 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div>
+        <div class="item animated bounceInDown"><img class="img" src="barn.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available Barn</h6><p style="margin-top:-5px;">Max: 35 People</p><p style="margin-top:-15px;">1.3 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div>
+        <div class="item animated bounceInDown"><img class="img" src="log_cabin.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available House</h6><p style="margin-top:-5px;">Max: 10 People</p><p style="margin-top:-15px;">0.6 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div>
+        <div class="item animated bounceInDown"><img class="img" src="barn.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available Barn</h6><p style="margin-top:-5px;">Max: 35 People</p><p style="margin-top:-15px;">1.3 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div>-->
+    <div class="se-pre-con"></div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <center>
+        <div id="facebook">
+            <div id="fb-root"></div>
+            <div class="fb-comments" data-href="http://resqmob.paperplane.io/#" data-width="500" data-numposts="10"></div>
+        </div>
+    </center>
+    <script>
+        var user_lat;
+        var user_long;
+        $(window).load(function() {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");
+	    });
+
+        $(document).ready(function() {
+            getNews();
+            //reset();
+        });
+        function settings() {
+            $('#facebook').children().remove();
+            $('#content').empty();
+            var marqee = localStorage.getItem('?marqee');
+            if (marqee == true) {
+                $('#content').append('<center><div class="animated flipInY"><h5>ResQ:</h5><br><h5>An Outreach to those in Need</h5><br><br><p>Varun Shenoy<br>Adiyan Kaul<br>Shreyas Patankar<br>Vallab Karanam</p><h6>Made with <img src="hearts.png" style="margin-top: 10px;width: 20px;"> at Make Hacks 2015<br>Icons by <a href="https://icons8.com/" target="_blank">Icons8</a><br>All News from <a href="http://www.bbc.co.uk/" target="_blank">BBC</a><br>UI built with <a href="http://materializecss.com/" target="_blank">MaterializeCSS</a></h6><p><strong>Enable live news ticker</strong></p><div class="switch"><label>Off<input type="checkbox" onclick="ticker()" id="newsCheck"><span class="lever"></span>On</label></div></div></center>');
+                console.log(true);
+                $('#newsCheck').prop('checked', false);
+            } else {
+                $('#content').append('<center><div class="animated flipInY"><h5>ResQ:</h5><br><h5>An Outreach to those in Need</h5><br><br><p>Varun Shenoy<br>Adiyan Kaul<br>Shreyas Patankar<br>Vallab Karanam</p><h6>Made with <img src="hearts.png" style="margin-top: 10px;width: 20px;"> at Make Hacks 2015<br>Icons by <a href="https://icons8.com/" target="_blank">Icons8</a><br>All News from <a href="http://www.bbc.co.uk/" target="_blank">BBC</a><br>UI built with <a href="http://materializecss.com/" target="_blank">MaterializeCSS</a></h6><p><strong>Enable live news ticker</strong></p><div class="switch"><label>Off<input type="checkbox" onclick="ticker()" id="newsCheck"><span class="lever"></span>On</label></div></div></center>');
+                $('#newsCheck').prop('checked', true);
+            }
+        }
+
+        function loadNews() {
+            $('#facebook').children().remove();
+            $('#timeLoad').removeClass('selected');
+            $('#mapLoad').removeClass('selected');
+            $('#homeLoad').removeClass('selected');
+            $('#newsLoad').addClass('selected');
+            $('#content').empty();
+            getNews();
+        }
+
+        function loadHomes() {
+            $('#facebook').children().remove();
+            $('#newsLoad').removeClass('selected');
+            $('#mapLoad').removeClass('selected');
+            $('#timeLoad').removeClass('selected');
+            $('#homeLoad').addClass('selected');
+            $('.indicator').css('left', '480px;')
+            $('#content').empty();
+            var ref=new Firebase("https://resq.firebaseio.com/");
+            ref.on("value", function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var cur=childSnapshot.val();
+                    $('#content').append('<div class="item animated bounceInUp"><img class="img" src="' +cur.home+'.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available '+ cur.home + '</h6><p style="margin-top:-5px;">Max: '+cur.refugee+ '  People</p><p style="margin-top:-15px;">0.6 miles away</p><p style="margin-top:-15px;">'+cur.descrip+'</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%; display: inline-block;" class="waves-effect waves-light btn" href="tel:'+ cur.num+'">Check In</a></div>');
+                });
+            }, function (errorObject) {
+                console.log("The read failed: " + errorObject.code);
+            });
+            /*$('#content').append('<div class="item animated bounceInUp"><img class="img" src="log_cabin.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available Cabin</h6><p style="margin-top:-5px;">Max: 10 People</p><p style="margin-top:-15px;">0.6 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%; display: inline-block;" class="waves-effect waves-light btn" href="tel:1-408-478-5682">Check In</a></div><div class="item animated bounceInUp"><img class="img" src="barn.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available Barn</h6><p style="margin-top:-5px;">Max: 35 People</p><p style="margin-top:-15px;">1.3 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div><div class="item animated bounceInUp"><img class="img" src="church.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available Church</h6><p style="margin-top:-5px;">Max: 10 People</p><p style="margin-top:-15px;">0.6 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div><div class="item animated bounceInUp"><img class="img" src="home.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available Home</h6><p style="margin-top:-5px;">Max: 35 People</p><p style="margin-top:-15px;">1.3 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div><div class="item animated bounceInUp"><img class="img" src="log_cabin.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available House</h6><p style="margin-top:-5px;">Max: 10 People</p><p style="margin-top:-15px;">0.6 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div><div class="item animated bounceInUp"><img class="img" src="barn.png" style="display:inline-block;"><div style="display:inline-block; float: right; padding: 15px; margin-top: -10px;"><h6 style="font-size: 15px;">Available Barn</h6><p style="margin-top:-5px;">Max: 35 People</p><p style="margin-top:-15px;">1.3 miles away</p><p style="margin-top:-15px;"><a href="">Locate house...</a></p></div><a style="width:100%;" class="waves-effect waves-light btn">Check In</a></div>');*/
+        }
+
+        function loadTime() {
+            $('#facebook').children().remove();
+            $('#newsLoad').removeClass('selected');
+            $('#mapLoad').removeClass('selected');
+            $('#homeLoad').removeClass('selected');
+            $('#timeLoad').addClass('selected');
+            $('#content').empty();
+            $('#content').append('<div class="item animated bounceInRight" style="padding-bottom: 40px;"><div class="row"><div class="input-field col s12"><textarea id="journal" class="materialize-textarea"></textarea><label for="icon_prefix2">Timeline Entry</label></div><center><a style="width:90%;" class="waves-effect waves-light btn" onclick="getLoc()">Submit</a></center></div><div id="entries"></div></div>');
+            var entries = localStorage.getItem('journal');
+            var parsed = JSON.parse(entries);
+            $('#entries').append(parsed);
+        }
+
+        function getNews() {
+            $('#facebook').children().remove();
+            $(".se-pre-con").fadeIn("slow");
+              var query = {
+              url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=int#',
+              type: 'html',
+              selector: 'item'
+              //extract: 'title'
+            },
+            uriQuery = encodeURIComponent(JSON.stringify(query)),
+            request  = 'http://example.noodlejs.com/?q=' +
+                       uriQuery + '&callback=?';
+
+
+          // Make Ajax request to Noodle server
+          jQuery.getJSON(request, function (data) {
+            //console.log(data[0].results );
+            var string=String(data[0].results);
+            var res=String(string.split("     "));
+            var res2=res.split("T,");
+            var res3=[];
+            for (var i = 0; i < res2.length; i++) {
+              var cur=String(res2[i]);
+              var cur2=String(cur.split(".,"));
+              var cur3=String(cur2.split("   "));
+              var cur4=cur3.split(",,");
+              $(".se-pre-con").fadeOut("slow");
+              $('#content').append('<div class="item animated bounceInUp"><div class="info" style=""><h5><strong>'+ cur4[0] +'</strong></h5><p>' + cur4[1] + '<br><a href="'+ cur4[3] +'" target="_blank">Read More...</a></p></div><p>'+cur4[4]+'T</p></div>');
+            };
+            for (var i = 0; i < 4; i++) {
+              var cur=String(res2[i]);
+              var cur2=String(cur.split(".,"));
+              var cur3=String(cur2.split("   "));
+              var cur4=cur3.split(",,");
+              $(".se-pre-con").fadeOut("slow");
+              $('.news').append('"' + cur4[0] + '"&nbsp;&nbsp;&nbsp;' + cur4[1] + '"&nbsp;&nbsp;&nbsp;' + cur4[4] + "T &nbsp;&nbsp;&nbsp;");
+            };
+          });
+        }
+
+        function reset() {
+            localStorage.setItem('journal', "");
+        }
+
+        function addHouse() {
+            $('#facebook').children().remove();
+            $('#content').empty();
+            $('#content').append('<div class="animated rollIn"><div class="row"><center><div class="input-field col s12 m12"><input id="comment" type="text" class="validate" placeholder="Comments about shelter:" style="width: 95%;"><div class="input-field col s12 m6"><input id="phone" type="number" class="validate" placeholder="Telephone # +1(123)456-7890..."></div><div class="input-field col s12 m6"><input id="max" type="number" class="validate" placeholder="Max. # of refugee intake..."></div></div><br><select id="solid" class="browser-default" style="width: 90%"><option value="" disabled selected>Choose your option</option><option value="Home">Home</option><option value="Cabin">Log Cabin</option><option value="Barn">Barn</option><option value="Church">Church</option><option value="Warehouse">Warehouse</option><option value="Shop">Shop</option><option value="Stadium">Stadium</option><option value="Company">Company</option><option value="Department">Department</option><option value="Hospital">Hospital</option><option value="Police">Police Station</option><option value="Mobile">Mobile House</option></select><br><br><button class="btn waves-effect waves-light" type="button" name="action" onclick="fireLoc()">Submit<i class="material-icons right">send</i></button></center></div>');
+            //<select><option value="home">Home</option><option value="log_cabin">Log Cabin</option><option value="barn">Barn</option><option value="church">Church</option></select>
+        }
+        function firebaseTime(position){
+            var description=document.getElementById("comment").value;
+            var number=document.getElementById("phone").value;
+            var max=document.getElementById("max").value;
+            var lat = position.coords.latitude;
+            var long = position.coords.longitude;
+            var type=$('#solid').find(":selected").val();
+            var ref = new Firebase("https://resq.firebaseio.com/");
+            var object={
+                descrip: description,
+                num:number,
+                refugee:max,
+                home:type,
+                lat:lat,
+                long:long
+            };
+            ref.push(object);
+            loadHomes();
+        }
+
+        function getLoc() {
+            var message = $('textarea#journal').val();
+            if (message != "") {
+                 if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(addEntry);
+                    } else {
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                 }
+            }
+        }
+
+        function fireLoc() {
+                 if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(firebaseTime);
+                    } else {
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                 }
+        }
+
+        function delDiv(e) {
+            console.log("deleted");
+            console.log(e);
+            $(e).parent().remove();
+            var journal = document.getElementById("entries").innerHTML
+            localStorage.setItem('journal', JSON.stringify(journal));
+        }
+
+        function loadMap() {
+
+        }
+
+        function addEntry(position) {
+            var time = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+            var message = $('textarea#journal').val();
+            var d = new Date();
+            var date = d.getMonth() + 1
+            var date = date + "/" + d.getDate() + "/" + d.getFullYear();
+            $('#entries').append('<div class="item animated bounceInRight"><img src="cancel.png" style="width:35px; float:right;" onclick="delDiv(this)"></img><h5><strong>' + date + ' (' + time + ')</strong></h5><br><p style="margin-top: -20px;">Lat: '+ position.coords.latitude +'<br>Long: ' + position.coords.longitude + '</p><hr style="background-color:#7f8c8d; color:#7f8c8d;"><br><p  style="margin-top: -20px;">' + message + '</p></div>');
+            var journal = document.getElementById("entries").innerHTML
+            localStorage.setItem('journal', JSON.stringify(journal));
+            $('#journal').val("");
+        }
+
+        function ticker() {
+            var marqee = localStorage.getItem('?marqee');
+            marqee = !marqee;
+            console.log(marqee);
+            localStorage.setItem('?marqee', marqee);
+            if ($('#newsCheck').is(":checked")) {
+                $('.newsHolder').append('<marquee class="news">HEADLINES: </marquee>');
+                localStorage.setItem('?marqee', false);
+                loadNews();
+            } else {
+                $('.newsHolder').children().remove();
+                localStorage.setItem('?marqee', true);
+            }
+        }
+
+        function showMap(position) {
+              $('#facebook').children().remove();
+              var ref=new Firebase("https://resq.firebaseio.com/");
+              var mapcanvas = document.createElement('div');
+              $(mapcanvas).addClass('map');
+              $('#content').append('<article style="margin-top:-80px;"></article>');
+              // Adds ID to the new div
+              mapcanvas.id = 'mapcanvas';
+              mapcanvas.style.height = '100vh';
+              mapcanvas.style.width = '100vw';
+              // Adds the new block element as the last thing within the mapwrapper block
+              $(mapcanvas).ready(function() {
+                document.querySelector('article').appendChild(mapcanvas);
+              });
+              // creates a new variable 'latlng' off of the google maps object
+              user_lat = position.coords.latitude;
+              user_long = position.coords.longitude;
+              var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+              //console.log(latlng);
+              // create new variable that contains options in key:value pairs
+              var myOptions = {
+                zoom: 15,
+                center: latlng,
+                // ROADMAP is set by default, other options are HYBRID, SATELLITE and TERRAIN
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+
+              // creates the new 'map' variable using the google object
+              // then using the 'mapcanvas' ID appending the options
+              var infowindow = new google.maps.InfoWindow();
+              var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+              var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+              // creates new 'marker' variable
+              var person = new google.maps.Marker({
+                  position: latlng,
+                  map: map,
+                  title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)",
+                  icon: 'cur.png'
+              });
+
+            google.maps.event.addListener(person, 'click', function () {
+
+                infowindow.setContent("Current Location");
+                infowindow.open(map, person);
+            });
+            ref.once("value", function(snapshot) {
+                  // The callback function will get called twice, once for "fred" and once for "barney"
+                  snapshot.forEach(function(childSnapshot) {
+                        // key will be "fred" the first time and "barney" the second time
+                        var key = childSnapshot.key();
+                        // childData will be the actual contents of the child
+                        var childData = childSnapshot.val();
+                        var latlng = new google.maps.LatLng(childData.lat, childData.long);
+                        var iconName = childData.home + '50.png';
+                        var shelter = new google.maps.Marker({
+                              position: latlng,
+                              map: map,
+                              title:"Shelter",
+                              icon: iconName
+                        });
+                       google.maps.event.addListener(shelter, 'click', function () {
+
+                            infowindow.setContent('<center><span style="padding: 0px; text-align:left" align="left"><h5>' + childData.home + '</h5><p>' + childData.descrip + '<br />Maximum # of refugees: ' + childData.refugee + '<br />' + '<button class="btn waves-effect waves-light red darken-4" onclick="go('+childData.lat+','+childData.long+')">Go</button></center>');
+                            infowindow.open(map, shelter);
+                        });
+                  });
+            });
+
+          }
+
+          function error(error) {
+            alert('code: ' + error.code + '\n' +
+        'message: ' + error.message + '\n');
+            // console.log(arguments);
+          }
+        
+        function loadMap() {
+            $('#facebook').children().remove();
+            $('#newsLoad').removeClass('selected');
+            $('#timeLoad').removeClass('selected');
+            $('#homeLoad').removeClass('selected');
+            $('#mapLoad').addClass('selected');
+            $('#content').empty();
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showMap,error);
+            } else {
+              alert('not supported');
+            }
+        }
+
+        function go(lat, long) {
+
+            var url = ' https://maps.google.com/maps?f=d&saddr=' + user_lat + ',' + user_long + '&daddr=' + lat + ',' + long;
+            //console.log(url);
+            var win = window.open(url, '_blank');
+
+
+        }
+
+        function forum() {
+           $('#newsLoad').removeClass('selected');
+            $('#timeLoad').removeClass('selected');
+            $('#homeLoad').removeClass('selected');
+            $('#mapLoad').removeClass('selected');
+           $('#content').empty();
+           console.log('clicked');
+           $('#facebook').append('<div id="fb-root"></div><div class="fb-comments" data-href="http://resqmob.paperplane.io/" data-width="500" data-numposts="10"></div>');
+           (function(d, s, id){
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=885083968274479";
+                 fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+        }
+
+    </script>
+</body>
+
+
+</html>
